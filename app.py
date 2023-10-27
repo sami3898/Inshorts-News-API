@@ -15,12 +15,13 @@ def home():
 def news():
     if request.method == 'GET':
         category = request.args.get("category")
+        limit = request.args.get("max_limit")
         if not category:
             return jsonify({
                 "error": "please add category in query params"
             }), 404
-        return jsonify(getNews(category)), 200
+        return jsonify(getNews(category, limit)), 200
 
 if __name__ == '__main__':
     app.debug = True
-    app.run(host='0.0.0.0',port=5000,use_reloader=True)
+    app.run(host='0.0.0.0',port=9000,use_reloader=True)

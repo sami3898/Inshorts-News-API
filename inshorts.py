@@ -28,13 +28,13 @@ params = (
 )
 
 
-def getNews(category):
+def getNews(category, limit):
     if category == 'all':
         response = requests.get(
-            'https://inshorts.com/api/en/news?category=all_news&max_limit=10&include_card_data=true')
+            'https://inshorts.com/api/en/news?category=all_news&max_limit={limit}&include_card_data=true')
     else:
         response = requests.get(
-            f'https://inshorts.com/api/en/search/trending_topics/{category}', headers=headers, params=params)
+            f'https://inshorts.com/api/en/search/trending_topics/{category}&max_limit={limit}', headers=headers, params=params)
     try:
         news_data = response.json()['data']['news_list']
     except Exception as e:
