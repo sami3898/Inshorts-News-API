@@ -34,7 +34,7 @@ def getNews(category, limit):
             'https://inshorts.com/api/en/news?category=all_news&max_limit={limit}&include_card_data=true')
     else:
         response = requests.get(
-            f'https://inshorts.com/api/en/search/trending_topics/{category}&max_limit={limit}', headers=headers, params=params)
+            f'https://inshorts.com/api/en/search/trending_topics/{category}&page={limit}&type=NEWS_CATEGORY', headers=headers,)
     try:
         news_data = response.json()['data']['news_list']
     except Exception as e:

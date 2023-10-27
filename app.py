@@ -15,7 +15,7 @@ def home():
 def news():
     if request.method == 'GET':
         category = request.args.get("category")
-        limit = request.args.get("max_limit")
+        limit = request.args.get("page")
         if not category:
             return jsonify({
                 "error": "please add category in query params"
